@@ -1,6 +1,6 @@
 import React from "react";
 import ResCard from "./ResCard";
-import { restaurantData } from "../utlis/mockData";
+import { restaurantData } from "../utlis/mockData"; 
 
 const Body = () => {
   
