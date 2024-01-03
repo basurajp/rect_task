@@ -1,23 +1,11 @@
 import React, { useState } from "react";
-import ResCard from "./ResCard";
+import ResCard, { withPromotedLabel } from "./ResCard";
 import { res_Data } from "../utlis/contanst";
-import { useEffect } from "react";
 
 const Body = () => {
   const [res_state_data, set_res_state_data] = useState(res_Data);
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-
-  // const fetchData = async () => {
-  //   const data = await fetch(
-  //     "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.8871281&lng=77.6554021&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-  //   );
-  //   const json = await data.json();
-  //   console.log(json);
-  //   set_res_state_data(json.data.cards[2].data.data.data.cards);
-  // };
+  const RestaurantCardPromoted = withPromotedLabel(ResCard);
 
   let filterRating = () => {
     set_res_state_data((prev_res_data) => {
@@ -32,9 +20,14 @@ const Body = () => {
       <div className="search">search</div>
       <button onClick={filterRating}>Top Rated Restaurant </button>
       <div className="res_container">
-        {res_state_data.map((item, index) => (
-          <ResCard item={item} key={item.info.id} />
-        ))}
+        {res_state_data.map((item, index) =>
+          // if the restaurant is promoted then add a promoted label to it
+          item.info.promoted ? (
+            <RestaurantCardPromoted item={item} key={item.info.id} />
+          ) : (
+            <ResCard item={item} key={item.info.id} />
+          )
+        )}
       </div>
     </div>
   );

@@ -17,4 +17,19 @@ export const ResCard = ({ item }) => {
   );
 };
 
+//  higher order components
+
+// inout -restaurantCard ==> restaurnt card Promoted
+
+export  const withPromotedLabel = (Res_card) => {
+  return (prop) => {
+    return (
+      <div>
+        <label>Promoted</label>
+        <Res_card {...prop} />
+      </div>
+    );
+  };
+};
+
 export default ResCard;

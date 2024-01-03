@@ -1,6 +1,7 @@
 export let res_Data = [
   {
     info: {
+      promoted:true,
       id: "57283",
       name: "Burger King",
       cloudinaryImageId: "e33e1d3ba7d6b2bb0d45e1001b731fcf",
