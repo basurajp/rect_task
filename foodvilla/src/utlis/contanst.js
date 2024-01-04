@@ -662,3 +662,6 @@ export let res_Data = [
 
 export let img_link = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"
 
+
+
+ 

@@ -23,6 +23,7 @@ export const ResCard = ({ item }) => {
 
 export  const withPromotedLabel = (Res_card) => {
   return (prop) => {
+   
     return (
       <div>
         <label>Promoted</label>
