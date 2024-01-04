@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
 import Navbar from "./Navbar";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { productsContext } from "../utlis/Context";
 import Loading from "./Loading";
 
 const Home = () => {
   const [products, setproducts] = useContext(productsContext);
   
+const {search }= useLocation()
+
+console.log(search)
 
   return products ? (
     <>

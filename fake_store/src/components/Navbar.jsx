@@ -16,7 +16,7 @@ const Navbar = () => {
     ).toFixed()},${(Math.random() * 255).toFixed()},0.4)`;
   };
 
-  console.log(color());
+
 
   return (
     <nav className="w-[15%] h-full bg-zinc-50 flex flex-col items-center  pt-5">
