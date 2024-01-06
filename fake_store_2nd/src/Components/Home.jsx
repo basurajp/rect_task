@@ -23,7 +23,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (!filterProducts) setfilterProducts(product);
+    if (!filterProducts || category =='undefined') setfilterProducts(product);
     if (category != "undefined") getProducCategory();
   }, [category,product]);
 
