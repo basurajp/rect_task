@@ -17,6 +17,8 @@ const Shimmer = () => {
       <div className="h-80 w-[18%] bg-gray-200 p-2 mb-5 rounded-md overflow-hidden"></div>
       <div className="h-80 w-[18%] bg-gray-200 p-2 mb-5 rounded-md overflow-hidden"></div>
       <div className="h-80 w-[18%] bg-gray-200 p-2 mb-5 rounded-md overflow-hidden"></div>
+      <div className="h-80 w-[18%] bg-gray-200 p-2 mb-5 rounded-md overflow-hidden"></div>
+      <div className="h-80 w-[18%] bg-gray-200 p-2 mb-5 rounded-md overflow-hidden"></div>
   
       </div>
     </>
