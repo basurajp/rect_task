@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utlis/useOnlineStatus";
 
 function Header() {
   const [btnName, setbtnName] = useState("Login");
+
+ const  onlineStattus = useOnlineStatus()
   return (
     <div className="nav_item w-full h-[20%]  flex items-center justify-between  ">
       <img
@@ -12,6 +15,10 @@ function Header() {
       />
       <div>
         <ul className="flex font-semibold mr-5 gap-7 ">
+
+          <li className="hover:text-red-500">
+            {onlineStattus ? '✅': '🔴'}
+          </li>
           <li className="hover:text-red-500">
             <Link to={"/"}>Home</Link>{" "}
           </li>
@@ -23,6 +30,12 @@ function Header() {
           "
           >
             <Link to={"/contact"}>Contact</Link>
+          </li>
+          <li
+            className="hover:text-red-500 
+          "
+          >
+            <Link to={"/grocery"}>Grocery</Link>
           </li>
           <button
             className={`0 ${

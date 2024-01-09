@@ -3,6 +3,7 @@ import Card from "./Card";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import UseResData from "../utlis/UseResData";
+import useOnlineStatus from "../utlis/useOnlineStatus";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
@@ -14,8 +15,8 @@ const Body = () => {
     setFilteredRes(filteredData);
   };
 
-const resData = UseResData()
-  
+  const resData = UseResData();
+
   // const fetchData = async () => {
   //   try {
   //     const apiData = await fetch(
@@ -43,6 +44,11 @@ const resData = UseResData()
     );
     setFilteredRes(filteredData);
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false)
+    return <h1>Looks like your are Offline check Your internet </h1>;
 
   if (resData.length === 0) return <Shimmer />;
 
