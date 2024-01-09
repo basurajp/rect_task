@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import UseResData from "../utlis/UseResData";
 
 const Body = () => {
-  const [resData, setResData] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredRes, setFilteredRes] = useState([]);
 
@@ -14,25 +14,27 @@ const Body = () => {
     setFilteredRes(filteredData);
   };
 
-  const fetchData = async () => {
-    try {
-      const apiData = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.8870305&lng=77.66077109999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      );
+const resData = UseResData()
+  
+  // const fetchData = async () => {
+  //   try {
+  //     const apiData = await fetch(
+  //       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.8870305&lng=77.66077109999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+  //     );
 
-      const jsonData = await apiData.json();
-      const { restaurants } =
-        jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle;
+  //     const jsonData = await apiData.json();
+  //     const { restaurants } =
+  //       jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle;
 
-      setResData(restaurants);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  //     setResData(restaurants);
+  //   } catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
   const handleSearch = () => {
     // Filter restaurants based on search text
