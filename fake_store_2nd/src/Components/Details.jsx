@@ -9,19 +9,26 @@ const Details = () => {
   const { id } = useParams();
   const [singleProduct, setsingleProduct] = useState(null);
 
-  const getSingleproduct = async () => {
-    try {
-      const { data } = await instance(`/products/${id}`);
-      setsingleProduct(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [product, setProduct] = useContext(ProductContext);
 
+
+  // const getSingleproduct = async () => {
+  //   try {
+  //     const { data } = await instance(`/products/${id}`);
+  //     setsingleProduct(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   useEffect(() => {
-    getSingleproduct();
+    // getSingleproduct()
+  
+    if (!product) {
+      setProduct(product.filter(p => p.id == id)[0]);
+    }
   }, []);
+  
 
   return singleProduct ? (
     <div className="w-[85%] h-full  m-auto p-[10%] flex ">

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
   const [btnName, setbtnName] = useState("Login");
@@ -11,13 +12,17 @@ function Header() {
       />
       <div>
         <ul className="flex font-semibold mr-5 gap-7 ">
-          <li className="hover:text-red-500">Home</li>
-          <li className="hover:text-red-500">About </li>
+          <li className="hover:text-red-500">
+            <Link to={"/"}>Home</Link>{" "}
+          </li>
+          <li className="hover:text-red-500">
+            <Link to={"/about"}>About</Link>{" "}
+          </li>
           <li
             className="hover:text-red-500 
           "
           >
-            Cart
+            <Link to={"/contact"}>Contact</Link>
           </li>
           <button
             className={`0 ${

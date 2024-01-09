@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
-  const [resData, setresData] = useState([]);
-  const [searchText, setsearchText] = useState("");
-  // const [filterRes, setfilterRes] = useState([]);
-
-  // console.log("Body Render", Math.random());
+  const [resData, setResData] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [filteredRes, setFilteredRes] = useState([]);
 
   const filterData = () => {
-    setresData((prev) => {
-      return prev.filter((res) => {
-        return res.info.avgRating > 4.1;
-      });
-    });
+    // Filter restaurants with avgRating greater than 4.1
+    const filteredData = resData.filter((res) => res.info.avgRating > 4.1);
+    setFilteredRes(filteredData);
   };
 
   const fetchData = async () => {
@@ -23,16 +20,11 @@ const Body = () => {
         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.8870305&lng=77.66077109999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
 
-      const json = await apiData.json();
-      // console.log(
-      //   json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
-      // );
-
+      const jsonData = await apiData.json();
       const { restaurants } =
-        json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle;
+        jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle;
 
-      setresData(restaurants);
-      // setfilterRes(restaurants);
+      setResData(restaurants);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -40,7 +32,15 @@ const Body = () => {
 
   useEffect(() => {
     fetchData();
-  },[]);
+  }, []);
+
+  const handleSearch = () => {
+    // Filter restaurants based on search text
+    const filteredData = resData.filter((res) =>
+      res.info.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredRes(filteredData);
+  };
 
   if (resData.length === 0) return <Shimmer />;
 
@@ -49,34 +49,31 @@ const Body = () => {
       <div className="btn-boxes flex gap-3">
         <div className="search">
           <input
-            className="ml-2 mb-2 px-3 py-1 "
-            // type="text"
-            // placeholder="Enter Restaurant  Name "
-            // value={searchText}
-            // onChange={(e) => setsearchText(e.target.value)}
+            className="ml-2 mb-2 px-3 py-1"
+            type="text"
+            placeholder="Enter Restaurant Name"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
           />
           <button
-            className="px-3 py-2 bg-green-400 text-white  font-semibold rounded-lg ml-2"
-            // onClick={() => {
-            // const filterResData =  resData.filter(res => res.info.name.tolowerCase().includes(searchText.toLowerCase())
-            
-            // setfilterRes(filterResData)
-            // }}
+            className="px-3 py-2 bg-green-400 text-white font-semibold rounded-lg ml-2"
+            onClick={handleSearch}
           >
             Search
           </button>
         </div>
         <button
           onClick={filterData}
-          className="px-3 py-2 bg-green-400 text-white  font-semibold rounded-lg ml-2"
+          className="px-3 py-2 bg-green-400 text-white font-semibold rounded-lg ml-2"
         >
-          Filter best-rated restaurant
+          Filter best-rated restaurants
         </button>
       </div>
 
-      <div className="w-full  h-[90%] flex gap-6 flex-wrap p-2">
-        {resData.map((res, index) => (
-          <Card res={res} key={index} />
+      <div className="w-full h-[90%] flex gap-6 flex-wrap p-2">
+        {/* Use filteredRes if available, otherwise use resData */}
+        {(filteredRes.length > 0 ? filteredRes : resData).map((res, index) => (
+          <Card res={res} id={res.info.id} key={res.info.id} />
         ))}
       </div>
     </>
