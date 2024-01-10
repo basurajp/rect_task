@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Card from "./Card";
+import Card, { withOpenLabel } from "./Card";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import UseResData from "../utlis/UseResData";
@@ -9,6 +9,8 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredRes, setFilteredRes] = useState([]);
 
+  const CardWithOpen = withOpenLabel(Card);
+
   const filterData = () => {
     // Filter restaurants with avgRating greater than 4.1
     const filteredData = resData.filter((res) => res.info.avgRating > 4.1);
@@ -17,6 +19,7 @@ const Body = () => {
 
   const resData = UseResData();
 
+  // console.log(resData[0].)
   // const fetchData = async () => {
   //   try {
   //     const apiData = await fetch(
@@ -78,11 +81,15 @@ const Body = () => {
         </button>
       </div>
 
-      <div className="w-full h-[90%] flex gap-6 flex-wrap p-2">
+      <div className="w-full h-[90%] flex gap-6 flex-wrap p-2 relative">
         {/* Use filteredRes if available, otherwise use resData */}
-        {(filteredRes.length > 0 ? filteredRes : resData).map((res, index) => (
-          <Card res={res} id={res.info.id} key={res.info.id} />
-        ))}
+        {(filteredRes.length > 0 ? filteredRes : resData).map((res, index) =>
+          res.info.isOpen ? (
+            <CardWithOpen res={res} id={res.info.id} key={res.info.id} />
+          ) : (
+            <Card res={res} id={res.info.id} key={res.info.id} />
+          )
+        )}
       </div>
     </>
   );

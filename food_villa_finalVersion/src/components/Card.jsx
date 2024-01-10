@@ -3,8 +3,6 @@ import { imageUrl } from "../utlis/constant";
 import { Link } from "react-router-dom";
 
 const Card = ({ res, id }) => {
- 
-
   const imageId = res?.info?.cloudinaryImageId;
 
   return (
@@ -25,6 +23,23 @@ const Card = ({ res, id }) => {
       <h6 className="overflow-hidden">{res.info.locality}</h6>
     </Link>
   );
+};
+
+// higher order components
+
+// input - Card  => cardwithOpenRes
+
+export const withOpenLabel = (Card) => {
+  return (res) => {
+    return (
+      <>
+        <label className="px-3 py-1 bg-black text-white font-semibold absolute top-2 rounded-lg ml-2 mt-16 ">
+          Open
+        </label>
+        <Card {...res} />
+      </>
+    );
+  };
 };
 
 export default Card;
