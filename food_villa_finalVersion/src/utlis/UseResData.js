@@ -10,8 +10,11 @@ const UseResData = () => {
           );
     
           const jsonData = await apiData.json();
+          
+          
           const { restaurants } =
-            jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle;
+            jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle;
+          // console.log(jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle)
     
           setResData(restaurants);
         } catch (error) {
