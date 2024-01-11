@@ -1,8 +1,18 @@
 import React from 'react'
 import { imageId } from '../utlis/constant'
+import {useDispatch} from 'react-redux'
+import { additem } from '../utlis/cartSlice'
 
 const SingleMenu = ({singlemenuName}) => {
-    
+ 
+
+const dispatch =  useDispatch()
+
+const handleAddClick =()=>{
+// distpatct an action 
+dispatch(additem('pizza'))
+}  
+  
 
 
 
@@ -22,7 +32,7 @@ const SingleMenu = ({singlemenuName}) => {
 
       alt="this is image "
     />
-    <button className="px-3 py-1 bg-black text-white font-semibold absolute right-4 bottom-4">Add +</button>
+    <button onClick={handleAddClick} className="px-3 py-1 bg-black text-white font-semibold absolute right-4 bottom-4">Add +</button>
   </div>
   )
 }

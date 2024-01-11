@@ -10,6 +10,9 @@ import Body from "./components/Body.jsx";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
 import { lazy } from "react";
 import Context from "./utlis/Context.jsx";
+import { Provider } from "react-redux";
+import appStore from "./utlis/appStore.js";
+
 
 const GroceryHome = lazy(() => import("./components/grocery/GroceryHome.jsx"));
 const About = lazy(() => import("./components/About.jsx"));
@@ -44,8 +47,9 @@ const appRouter = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Context>
-  <RouterProvider router={appRouter} />
-
-  </Context>
+  <Provider store={appStore}>
+    <Context>
+      <RouterProvider router={appRouter} />
+    </Context>
+  </Provider>
 );

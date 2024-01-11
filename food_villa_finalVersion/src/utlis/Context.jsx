@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 export const userNameContext = createContext();
 
 const Context = ({ children }) => {
-  const [userName, setUserName] = useState('Context data serchHere ');
+  const [userName, setUserName] = useState('Context');
 
   return (
     <userNameContext.Provider value={[userName, setUserName]}>
