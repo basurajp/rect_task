@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utlis/useOnlineStatus";
+import { userNameContext } from "../utlis/Context";
 
 function Header() {
   const [btnName, setbtnName] = useState("Login");
 
+// console.log(data)
+
+
  const  onlineStattus = useOnlineStatus()
+ const [userName, setUserName] = useContext(userNameContext)
   return (
     <div className="nav_item w-full h-[20%]  flex items-center justify-between  ">
       <img
@@ -37,6 +42,14 @@ function Header() {
           >
             <Link to={"/grocery"}>Grocery</Link>
           </li>
+     
+          <li
+            className="hover:text-red-500 
+          "
+          >
+            <Link to={"/grocery"}>{userName}</Link>
+          </li>
+     
           <button
             className={`0 ${
               btnName === "Login" ? "bg-green-500" : "bg-red-500"

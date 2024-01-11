@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import MenuItem from "./MenuItem";
 
-const RestaurantMenuHeading = ({ menuitem }) => {
-  const [toggle, settoggle] = useState(false);
+const RestaurantMenuHeading = ({ menuitem ,toggle , setshowindex }) => {
 
   const HandleToggle = () => {
-    settoggle(!toggle);
-    console.log("btn clicked ");
+  
+    setshowindex()
   };
 
   return (
-    <div className="border-b-8  ">
+    <div className="border-b-1 shadow-lg p-2">
       <div
         className="flex justify-between mt-2 pt-3 cursor-pointer "
         onClick={HandleToggle}

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Card, { withOpenLabel } from "./Card";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import UseResData from "../utlis/UseResData";
 import useOnlineStatus from "../utlis/useOnlineStatus";
+import { userNameContext } from "../utlis/Context";
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
@@ -18,6 +19,8 @@ const Body = () => {
   };
 
   const resData = UseResData();
+
+  const [userName, setUserName] =useContext(userNameContext)
 
   // console.log(resData[0].)
   // const fetchData = async () => {
@@ -72,6 +75,13 @@ const Body = () => {
           >
             Search
           </button>
+          <input
+            className="ml-2 mb-2 px-3 py-1"
+            type="text"
+            placeholder="Enter Restaurant Name"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </div>
         <button
           onClick={filterData}
