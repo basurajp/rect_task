@@ -14,12 +14,14 @@ function Header() {
 
   // Seletor  is noting but hook (subscribing to store )
 
-  const cartitem = useSelector((store)=>store.cart.items);
+  const cartitem  = useSelector((store)=>store.cart.items)
+  
 
   return (
-    <div className="nav_item w-full h-[20%]  flex items-center justify-between  ">
+    <div 
+     className="nav_item w-full h-[20%]  flex items-center justify-between ">
       <img
-        className="w-[20% h-[90%]"
+        className="w-[20% h-[90%] "
         src="https://imgs.search.brave.com/bW6WuMMz8C5ZEtBWeMxJuTKHmDIM4yZJS_E5xdbdjnU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAwLzkxLzgyLzE0/LzM2MF9GXzkxODIx/NDg2XzhNZkxkVGVS/S3ZMZGFEdDdZVnIx/Z0pNbmp2VTFXaUFV/LmpwZw"
         alt="this is logo"
       />
