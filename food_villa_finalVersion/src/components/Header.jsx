@@ -44,7 +44,9 @@ function Header() {
             className="hover:text-red-500 font-bold text-xl 
           "
           >
-            <Link>Cart - ({cartitem.length} item )</Link>
+            <Link
+            to={'/cart'}
+            >Cart - ({cartitem.length} item )</Link>
           </li>
           <li
             className="hover:text-red-500 

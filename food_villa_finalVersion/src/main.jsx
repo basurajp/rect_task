@@ -12,7 +12,7 @@ import { lazy } from "react";
 import Context from "./utlis/Context.jsx";
 import { Provider } from "react-redux";
 import appStore from "./utlis/appStore.js";
-
+import Cart from "./components/Cart.jsx";
 
 const GroceryHome = lazy(() => import("./components/grocery/GroceryHome.jsx"));
 const About = lazy(() => import("./components/About.jsx"));
@@ -42,6 +42,7 @@ const appRouter = createBrowserRouter([
         ),
       },
       { path: "/restaurant/:resId", element: <RestaurantMenu /> },
+      {path:'/cart' ,element: <Cart/>}
     ],
   },
 ]);
