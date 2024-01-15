@@ -1,15 +1,13 @@
-import React from 'react'
-import NavBar from './components/NavBar'
-import Work from './components/Work'
+import Navbar from "./components/Navbar";
 
-const App = () => {
+
+function App() {
+ 
   return (
-    <div  className='w-full h-screen bg-zinc-900 text-white font-["satoshi"]'>
-      <NavBar />
-      <Work />
-    
-    </div>
-  )
+   <div className="w-full h-screen bg-zinc-900 text-white">
+    <Navbar />
+   </div>
+  );
 }
 
-export default App
+export default App;
