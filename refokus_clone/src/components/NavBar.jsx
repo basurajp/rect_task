@@ -12,9 +12,9 @@ const Navbar = () => {
         <div className="links flex gap-14 ml-24">
           {["Home", "Work", "Culture", "", "News"].map((elem, index) =>
             elem.length == 0 ? (
-              <span className="w-[2px] h-7 bg-zinc-700"></span>
+              <span key={index} className="w-[2px] h-7 bg-zinc-700"></span>
             ) : (
-              <a
+              <a 
                 className="text-sm flex items-center gap-1 font-regular "
                 href="#"
                 key={index}
