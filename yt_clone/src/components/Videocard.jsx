@@ -1,7 +1,6 @@
 import React from "react";
 
-const Videocard = ({elem}) => {
-    
+const Videocard = ({ elem }) => {
   return (
     <div className="shadow-xl mt-3 ml-2 p-1">
       <img
@@ -9,9 +8,17 @@ const Videocard = ({elem}) => {
         src={elem.snippet.thumbnails.high.url}
         alt="thumnail"
       />
-      <h1 className="font-medium w-[290px]"> {elem.snippet.title } </h1>
+      <h1 className="font-medium w-[290px]"> {elem.snippet.title} </h1>
       <h2>{elem.snippet.channelTitle}</h2>
-      <span>{elem.statistics.viewCount} views </span> 
+      <span>{elem.statistics.viewCount} views </span>
+    </div>
+  );
+};
+
+export const AdVideoCard  = ({elem}) => {
+  return (
+    <div className="p-1 m-1 border border-red-800">
+      <Videocard elem={elem} />
     </div>
   );
 };
