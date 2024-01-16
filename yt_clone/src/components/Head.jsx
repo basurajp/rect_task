@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../store/appSlice";
 import { YOUTUBE_SEARCH_API } from "./utlis/constant";
+import { cacheResults } from "../store/searchSlice";
 
 const Head = () => {
   const dispatch = useDispatch();
@@ -12,10 +13,19 @@ const Head = () => {
   const [searchQuery, setsearchQuery] = useState("");
   const [suggestion, setsuggestion] = useState([]);
   const [showSuggestion, setshowSuggestion] = useState(false);
+//
+
+  const searchCache = useSelector((store) => store.search);
+
+  //
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      getSearchData();
+      if (searchCache[searchQuery]) {
+        setsuggestion(searchCache[searchQuery]);
+      } else {
+        getSearchData();
+      }
     }, 200);
     return () => {
       clearTimeout(timer);
@@ -27,6 +37,11 @@ const Head = () => {
     const json = await data.json();
 
     setsuggestion(json[1]);
+    dispatch(cacheResults({
+      [searchQuery] :json[1]
+    }))
+
+
   };
 
   return (
