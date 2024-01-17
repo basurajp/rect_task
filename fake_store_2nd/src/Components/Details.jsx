@@ -12,17 +12,17 @@ const Details = () => {
   const [product, setProduct] = useContext(ProductContext);
 
 
-  // const getSingleproduct = async () => {
-  //   try {
-  //     const { data } = await instance(`/products/${id}`);
-  //     setsingleProduct(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const getSingleproduct = async () => {
+    try {
+      const { data } = await instance(`/products/${id}`);
+      setsingleProduct(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    // getSingleproduct()
+    getSingleproduct()
   
     if (!product) {
       setProduct(product.filter(p => p.id == id)[0]);
