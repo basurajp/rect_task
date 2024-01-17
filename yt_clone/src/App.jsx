@@ -4,6 +4,7 @@ import Body from "./components/Body";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainConatiner from "./components/MainContainer";
 import Watchpage from "./components/Watchpage";
+import Demo from "./components/Demo";
 
 const App = () => {
   const appRouter = createBrowserRouter([{ path: "/", element: <Body />,
@@ -13,8 +14,12 @@ children:[
     element: <MainConatiner/>
   },
   {
-    path:'watch',
+    path:'/watch',
     element: <Watchpage/>
+  },
+  {
+    path:'/demo',
+    element: <Demo/>
   }
 ]
 
