@@ -1,8 +1,10 @@
+import Body from "./components/Body";
+
 function App() {
   return (
-    <>
-      <h1>app</h1>
-    </>
+    <div className="">
+      <Body />
+    </div>
   );
 }
 

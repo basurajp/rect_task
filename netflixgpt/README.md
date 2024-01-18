@@ -23,3 +23,10 @@ Currently, two official plugins are available:
 -NetflixGpt
     -SearchBar
     - Movie Suggestions
+
+
+
+App
+    -Body
+        -Login
+        -Browse    
